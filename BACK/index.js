@@ -24,11 +24,23 @@ app.listen(port, () => {
     console.log(`Server starting on ${port}`)
 })
 
-// app.use(function (req,
-//     res,
-//     next) {
-// res.header("Access-Control-Allow-Origin", "*");
-// res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
-// res.header("Access-Control-Allow-Headers", "Content-Type");
-// next();
-// })
+
+app.delete('/delete/:id', function(req, res) {
+    console.log(req.params)
+    const id = req.params.id;
+    NoteDB.findOneAndDelete({_id: id}).then(res => {
+        console.log(res)
+    }).catch(err => {
+        console.log(err)
+    });
+})
+
+
+app.use(function (req,
+    res,
+    next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
+res.header("Access-Control-Allow-Headers", "Content-Type");
+next();
+})
