@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.inputCard{
+  transform: translateX(50%);
+  padding:5px;
+  margin-top:50px;
+  border: 1px solid #282c34;
+  width:300px;
+}
+.nameField{
+  margin-bottom:10px;
+}
+.name{
+  margin-top:0px;
+}
