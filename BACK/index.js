@@ -24,7 +24,20 @@ app.listen(port, () => {
     console.log(`Server starting on ${port}`)
 })
 
+app.post('/create-note', cors(), (req, res) => {
+    console.log(req.body)
+    NoteDB.create({
+        noteText: req.body.noteText,
+    })
+        .then(user => res.send({status: 'ok'}))
+        .catch(err => res.send(err));
+})
 
+app.get('/notes', (req, res) => {
+    NoteDB.find()
+        .then(notes => res.send({notes: notes}))
+        .catch(err => res.send(err));
+})
 app.delete('/delete/:id', function(req, res) {
     console.log(req.params)
     const id = req.params.id;
