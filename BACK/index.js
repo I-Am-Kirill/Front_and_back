@@ -1,8 +1,11 @@
-import { Express } from "express";
-import { Mongoose } from "mongoose";
+import  express from "express";
+import mongoose from "mongoose";
+import cors from 'cors';
 
 const app = express()
 const port = 3001
+
+app.use(express.urlencoded({ extended:true }))
 
 mongoose.connect("mongodb+srv://School-It:Password12345@test-back-it.rv5t7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" ,
     {
@@ -48,7 +51,7 @@ app.delete('/delete/:id', function(req, res) {
     });
 })
 
-
+app.use(cors())
 app.use(function (req,
     res,
     next) {
