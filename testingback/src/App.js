@@ -7,6 +7,14 @@ function App() {
   const [inputText, setInputText] = useState('Hello');
     const [notesContent, setNotesContent] = useState([]);
 
+    const handleInput = ({target}) => {
+        if (target.value === 'СтудСовет') {
+            setInputText('ЭМИТ')
+        } else {
+            setInputText(target.value)
+        }
+
+    }
 
     const handleSubmit = () => {
         fetch('http://localhost:3001/create-note', {
